@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cases · KLI Cube</title>
+<meta name="description" content="Worked cases: the same wrong answer in mathematics can sit in four different cells and need four different next moves.">
+<meta property="og:title" content="Cases · KLI Cube">
+<meta property="og:description" content="Worked cases: the same wrong answer in mathematics can sit in four different cells and need four different next moves.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{var l=new URLSearchParams(location.search).get("level")||localStorage.getItem("kli-level");if(l)document.documentElement.dataset.level=l}catch(e){}</script>
+</head>
+<body data-page="cases">
+<header class="topbar">
+  <div class="shell">
+    <a class="brand" href="index.html" data-keep-level><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>KLI Cube<small>Diagnose before you teach</small></span></a>
+    <nav class="nav" aria-label="Main"><a href="index.html" data-keep-level>Matrix</a><a href="cases.html" data-keep-level aria-current="page">Cases</a><a href="references.html" data-keep-level>References</a></nav>
+    <div class="level-toggle" role="group" aria-label="Year band" data-level="junior">
+      <span class="thumb"></span>
+      <button data-level="junior" aria-pressed="true">Years 9–10</button>
+      <button data-level="senior" aria-pressed="false">Years 11–12 · VCE</button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="shell">
+    <section class="page-hero">
+      <div class="eyebrow">Worked cases · <span data-level-label>Years 9–10</span></div>
+      <h1>One wrong answer.<br>Four next moves.</h1>
+      <p>Each case starts from a real error. For each possible cause: what you see, the question that confirms it, and the teaching response that fits that cell.</p>
+      <div class="case-tabs" id="case-tabs"></div>
+    </section>
+    <div id="cases" data-swap></div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div><strong style="color:var(--ink)">KLI Cube</strong> · Knowledge × Learning stage × Instructional response<br>Clark Cao (Yuchen Cao) · Secondary Mathematics · Melbourne</div>
+    <div style="max-width:30em">A practical synthesis for planning, built on the research listed in <a href="references.html" data-keep-level>References</a>. It is not a validated model.</div>
+  </div>
+</footer>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
