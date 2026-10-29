@@ -65,11 +65,15 @@
         <p>Each cell is a different teaching problem. Click a cell for what you'll see, what success looks like, the strategies that fit, and the research behind it.</p>
       </div>
       <div class="lens-panel reveal">
-        <div class="lens-panel-head">
-          <span class="cube-ico" aria-hidden="true"><i></i><i></i><i></i></span>
-          <div><div class="eyebrow">Third axis · instructional response</div><p id="lens-question">View the matrix through a lens: the core move for each cell, or the strategies from one area of practice.</p></div>
+        <div class="view-row">
+          <div class="seg" id="view-seg" role="group" aria-label="Show in each cell">
+            <button data-view="core" aria-pressed="true">Core move</button>
+            <button data-view="strategies" aria-pressed="false">Strategies</button>
+          </div>
+          <label class="switch"><input type="checkbox" id="hits-switch"><span class="track" aria-hidden="true"></span>Show Victorian HITS</label>
         </div>
-        <div class="lens-bar" id="lens-bar" role="tablist" aria-label="Instructional lens"></div>
+        <div class="lens-bar" id="lens-filter" role="group" aria-label="Filter strategies by lens" hidden></div>
+        <p class="lens-q" id="lens-question"></p>
       </div>
       <div class="matrix-scroll reveal"><div class="matrix" id="matrix" data-swap></div></div>
       <p class="matrix-note">Rows adapt Anderson &amp; Krathwohl's knowledge dimension, with conditional knowledge in the metacognitive row. Columns follow Haring &amp; Eaton's instructional hierarchy. A topic can sit in different cells for different students.</p>

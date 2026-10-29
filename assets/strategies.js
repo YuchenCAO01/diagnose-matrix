@@ -1,17 +1,11 @@
-/* Third axis: instructional response. Lenses, strategy bank, Victorian HITS tags, and the strategies chosen for each cell. */
+/* The response, read through seven lenses. Strategy bank (with Victorian HITS tags) and the 3–4 strategies chosen for each cell. */
 Object.assign(window.KLI, {
  "lenses": [
   {
    "id": "pedagogy",
    "icon": "↗",
-   "name": "Pedagogy",
-   "question": "How should the overall learning pathway be organised?"
-  },
-  {
-   "id": "hits",
-   "icon": "✦",
-   "name": "HITS",
-   "question": "Which Victorian High Impact Teaching Strategies fit this need? This view gathers every HITS-tagged strategy chosen for the cell, across all lenses."
+   "name": "Teaching approach",
+   "question": "How should the learning be organised and led?"
   },
   {
    "id": "practice",
@@ -23,13 +17,13 @@ Object.assign(window.KLI, {
    "id": "differentiation",
    "icon": "≋",
    "name": "Differentiation & UDL",
-   "question": "How should access, support and challenge be adjusted?"
+   "question": "How should access, support and challenge be adjusted within the cell?"
   },
   {
    "id": "assessment",
    "icon": "◎",
    "name": "Assessment evidence",
-   "question": "How will the teacher know where learning currently sits?"
+   "question": "How will I know where learning sits, and when it has moved?"
   },
   {
    "id": "scaffolding",
@@ -136,7 +130,7 @@ Object.assign(window.KLI, {
   },
   "goal_structure": {
    "name": "Goals + lesson structure",
-   "lens": "hits",
+   "lens": "pedagogy",
    "desc": "Clarify success criteria and sequence the opening, modelling, practice, checks and closure around the learning goal.",
    "hits": [
     1,
@@ -149,7 +143,7 @@ Object.assign(window.KLI, {
   },
   "worked_examples": {
    "name": "Worked examples",
-   "lens": "hits",
+   "lens": "scaffolding",
    "desc": "Use complete and progressively faded examples to expose key decisions and reduce unproductive search for novices.",
    "hits": [
     4
@@ -161,7 +155,7 @@ Object.assign(window.KLI, {
   },
   "questioning": {
    "name": "Questioning",
-   "lens": "hits",
+   "lens": "assessment",
    "desc": "Use all-student response, reasoning prompts, hinge questions and wait time to collect actionable evidence.",
    "hits": [
     7
@@ -173,7 +167,7 @@ Object.assign(window.KLI, {
   },
   "multiple_exposures": {
    "name": "Multiple exposures",
-   "lens": "hits",
+   "lens": "practice",
    "desc": "Deliberately revisit core knowledge across time and forms rather than treating one presentation as sufficient.",
    "hits": [
     6
@@ -185,7 +179,7 @@ Object.assign(window.KLI, {
   },
   "collaborative": {
    "name": "Collaborative learning",
-   "lens": "hits",
+   "lens": "pedagogy",
    "desc": "Set roles, a shared product and individual accountability so interaction serves the learning goal.",
    "hits": [
     5
@@ -196,7 +190,7 @@ Object.assign(window.KLI, {
   },
   "metacognitive": {
    "name": "Metacognitive strategies",
-   "lens": "hits",
+   "lens": "pedagogy",
    "desc": "Prompt students to plan, monitor, justify choices and evaluate the effectiveness of their approaches.",
    "hits": [
     9
@@ -329,7 +323,8 @@ Object.assign(window.KLI, {
    "refs": [
     "black1998",
     "burns2010"
-   ]
+   ],
+   "note": "Used before any cell: this is how a difficulty is located on the matrix."
   },
   "whiteboards": {
    "name": "Mini-whiteboards",
@@ -501,507 +496,290 @@ Object.assign(window.KLI, {
    ]
   }
  },
- "responses": {
-  "factual.acquisition": {
-   "pedagogy": [
-    "explicit_instruction"
-   ],
-   "hits": [
-    "multiple_exposures",
-    "goal_structure",
-    "worked_examples"
-   ],
-   "practice": [
-    "retrieval",
-    "spacing"
-   ],
-   "differentiation": [
-    "preteach"
-   ],
-   "assessment": [
-    "diagnostic",
-    "exit_ticket"
-   ],
-   "scaffolding": [
-    "chunking",
-    "reduce_load"
-   ],
-   "representation": [
-    "examples_nonexamples"
-   ],
-   "feedback": [
-    "corrective"
-   ]
-  },
-  "factual.fluency": {
-   "pedagogy": [
-    "explicit_instruction"
-   ],
-   "hits": [
-    "multiple_exposures"
-   ],
-   "practice": [
-    "retrieval",
-    "spacing",
-    "deliberate"
-   ],
-   "differentiation": [
-    "preteach",
-    "readiness"
-   ],
-   "assessment": [
-    "whiteboards"
-   ],
-   "scaffolding": [
-    "prompt_fade"
-   ],
-   "representation": [
-    "multiple_representations"
-   ],
-   "feedback": [
-    "corrective",
-    "efficiency"
-   ]
-  },
-  "factual.generalisation": {
-   "pedagogy": [
-    "dialogic"
-   ],
-   "hits": [
-    "multiple_exposures"
-   ],
-   "practice": [
-    "variation",
-    "retrieval",
-    "spacing"
-   ],
-   "differentiation": [
-    "preteach",
-    "tiered"
-   ],
-   "assessment": [
-    "transfer_probe"
-   ],
-   "scaffolding": [
-    "prompt_fade"
-   ],
-   "representation": [
-    "multiple_representations",
-    "examples_nonexamples"
-   ],
-   "feedback": [
-    "corrective",
-    "strategic"
-   ]
-  },
-  "factual.adaptation": {
-   "pedagogy": [
-    "problem_based"
-   ],
-   "hits": [
-    "metacognitive",
-    "multiple_exposures"
-   ],
-   "practice": [
-    "open_problem",
-    "retrieval",
-    "spacing"
-   ],
-   "differentiation": [
-    "extension",
-    "choice"
-   ],
-   "assessment": [
-    "rubric"
-   ],
-   "scaffolding": [
-    "productive_struggle"
-   ],
-   "representation": [
-    "multiple_representations"
-   ],
-   "feedback": [
-    "strategic",
-    "corrective",
-    "reflective"
-   ]
-  },
-  "conceptual.acquisition": {
-   "pedagogy": [
-    "dialogic",
-    "explicit_instruction"
-   ],
-   "hits": [
-    "questioning",
-    "goal_structure",
-    "worked_examples"
-   ],
-   "practice": [
-    "variation"
-   ],
-   "differentiation": [
-    "preteach"
-   ],
-   "assessment": [
-    "diagnostic",
-    "exit_ticket"
-   ],
-   "scaffolding": [
-    "chunking",
-    "reduce_load"
-   ],
-   "representation": [
-    "examples_nonexamples",
-    "concrete_visual_symbolic",
-    "multiple_representations"
-   ],
-   "feedback": [
-    "corrective"
-   ]
-  },
-  "conceptual.fluency": {
-   "pedagogy": [
-    "dialogic"
-   ],
-   "hits": [
-    "questioning",
-    "multiple_exposures"
-   ],
-   "practice": [
-    "retrieval",
-    "spacing",
-    "deliberate"
-   ],
-   "differentiation": [
-    "readiness"
-   ],
-   "assessment": [
-    "whiteboards"
-   ],
-   "scaffolding": [
-    "prompt_fade"
-   ],
-   "representation": [
-    "examples_nonexamples",
-    "multiple_representations",
-    "dynamic_model"
-   ],
-   "feedback": [
-    "efficiency"
-   ]
-  },
-  "conceptual.generalisation": {
-   "pedagogy": [
-    "dialogic"
-   ],
-   "hits": [
-    "questioning",
-    "collaborative"
-   ],
-   "practice": [
-    "variation",
-    "interleaving"
-   ],
-   "differentiation": [
-    "tiered"
-   ],
-   "assessment": [
-    "transfer_probe"
-   ],
-   "scaffolding": [
-    "prompt_fade"
-   ],
-   "representation": [
-    "multiple_representations",
-    "dynamic_model",
-    "examples_nonexamples"
-   ],
-   "feedback": [
-    "strategic"
-   ]
-  },
-  "conceptual.adaptation": {
-   "pedagogy": [
-    "guided_inquiry",
-    "dialogic",
-    "problem_based"
-   ],
-   "hits": [
-    "questioning",
-    "metacognitive",
-    "collaborative"
-   ],
-   "practice": [
-    "open_problem"
-   ],
-   "differentiation": [
-    "extension",
-    "choice"
-   ],
-   "assessment": [
-    "rubric"
-   ],
-   "scaffolding": [
-    "productive_struggle"
-   ],
-   "representation": [
-    "examples_nonexamples",
-    "multiple_representations",
-    "dynamic_model"
-   ],
-   "feedback": [
-    "reflective"
-   ]
-  },
-  "procedural.acquisition": {
-   "pedagogy": [
-    "explicit_instruction"
-   ],
-   "hits": [
-    "worked_examples",
-    "goal_structure",
-    "questioning"
-   ],
-   "practice": [
-    "deliberate"
-   ],
-   "differentiation": [
-    "preteach"
-   ],
-   "assessment": [
-    "diagnostic",
-    "exit_ticket"
-   ],
-   "scaffolding": [
-    "chunking",
-    "reduce_load",
-    "prompt_fade"
-   ],
-   "representation": [
-    "concrete_visual_symbolic"
-   ],
-   "feedback": [
-    "corrective",
-    "efficiency"
-   ]
-  },
-  "procedural.fluency": {
-   "pedagogy": [
-    "explicit_instruction"
-   ],
-   "hits": [
-    "worked_examples",
-    "multiple_exposures"
-   ],
-   "practice": [
-    "deliberate",
-    "retrieval",
-    "spacing"
-   ],
-   "differentiation": [
-    "readiness"
-   ],
-   "assessment": [
-    "whiteboards"
-   ],
-   "scaffolding": [
-    "prompt_fade"
-   ],
-   "representation": [
-    "examples_nonexamples"
-   ],
-   "feedback": [
-    "efficiency"
-   ]
-  },
-  "procedural.generalisation": {
-   "pedagogy": [
-    "explicit_instruction",
-    "dialogic"
-   ],
-   "hits": [
-    "worked_examples"
-   ],
-   "practice": [
-    "variation",
-    "interleaving",
-    "deliberate"
-   ],
-   "differentiation": [
-    "tiered"
-   ],
-   "assessment": [
-    "transfer_probe"
-   ],
-   "scaffolding": [
-    "prompt_fade"
-   ],
-   "representation": [
-    "examples_nonexamples",
-    "multiple_representations"
-   ],
-   "feedback": [
-    "strategic",
-    "efficiency"
-   ]
-  },
-  "procedural.adaptation": {
-   "pedagogy": [
-    "problem_based",
-    "explicit_instruction"
-   ],
-   "hits": [
-    "metacognitive",
-    "collaborative"
-   ],
-   "practice": [
-    "open_problem",
-    "deliberate"
-   ],
-   "differentiation": [
-    "extension",
-    "choice"
-   ],
-   "assessment": [
-    "rubric"
-   ],
-   "scaffolding": [
-    "prompt_fade",
-    "productive_struggle"
-   ],
-   "representation": [
-    "multiple_representations"
-   ],
-   "feedback": [
-    "reflective",
-    "strategic"
-   ]
-  },
-  "conditional.acquisition": {
-   "pedagogy": [
-    "dialogic",
-    "explicit_instruction"
-   ],
-   "hits": [
-    "worked_examples",
-    "goal_structure",
-    "questioning"
-   ],
-   "practice": [
-    "interleaving"
-   ],
-   "differentiation": [
-    "readiness"
-   ],
-   "assessment": [
-    "hinge",
-    "transfer_probe",
-    "exit_ticket"
-   ],
-   "scaffolding": [
-    "chunking",
-    "reduce_load"
-   ],
-   "representation": [
-    "examples_nonexamples"
-   ],
-   "feedback": [
-    "strategic",
-    "corrective"
-   ]
-  },
-  "conditional.fluency": {
-   "pedagogy": [
-    "dialogic"
-   ],
-   "hits": [
-    "multiple_exposures"
-   ],
-   "practice": [
-    "retrieval",
-    "interleaving",
-    "spacing"
-   ],
-   "differentiation": [
-    "readiness"
-   ],
-   "assessment": [
-    "hinge",
-    "whiteboards",
-    "transfer_probe"
-   ],
-   "scaffolding": [
-    "prompt_fade"
-   ],
-   "representation": [
-    "examples_nonexamples"
-   ],
-   "feedback": [
-    "strategic",
-    "efficiency"
-   ]
-  },
-  "conditional.generalisation": {
-   "pedagogy": [
-    "dialogic"
-   ],
-   "hits": [
-    "metacognitive",
-    "collaborative"
-   ],
-   "practice": [
-    "interleaving",
-    "variation"
-   ],
-   "differentiation": [
-    "tiered"
-   ],
-   "assessment": [
-    "transfer_probe",
-    "rubric",
-    "hinge"
-   ],
-   "scaffolding": [
-    "prompt_fade"
-   ],
-   "representation": [
-    "examples_nonexamples",
-    "multiple_representations"
-   ],
-   "feedback": [
-    "strategic"
-   ]
-  },
-  "conditional.adaptation": {
-   "pedagogy": [
-    "problem_based"
-   ],
-   "hits": [
-    "metacognitive"
-   ],
-   "practice": [
-    "open_problem",
-    "interleaving"
-   ],
-   "differentiation": [
-    "choice",
-    "extension"
-   ],
-   "assessment": [
-    "hinge",
-    "transfer_probe",
-    "rubric"
-   ],
-   "scaffolding": [
-    "productive_struggle"
-   ],
-   "representation": [
-    "examples_nonexamples"
-   ],
-   "feedback": [
-    "strategic",
-    "reflective"
-   ]
-  }
+ "picks": {
+  "factual.acquisition": [
+   {
+    "id": "preteach",
+    "how": "Introduce new symbols and terms before the lesson that needs them, so the idea isn’t competing with unfamiliar notation."
+   },
+   {
+    "id": "examples_nonexamples",
+    "how": "Put each term beside a near-miss (x³ beside 3x) so the decisive feature is visible."
+   },
+   {
+    "id": "chunking",
+    "how": "Two or three new items per lesson, each clearly signalled."
+   },
+   {
+    "id": "exit_ticket",
+    "how": "One uncued recall item at the end confirms each item was learned accurately."
+   }
+  ],
+  "factual.fluency": [
+   {
+    "id": "retrieval",
+    "how": "Recall from memory at the start of lessons, no notes, checked straight away."
+   },
+   {
+    "id": "spacing",
+    "how": "Bring the same facts back across days and weeks, not only inside the unit."
+   },
+   {
+    "id": "whiteboards",
+    "how": "Everyone shows an answer at once, so gaps across the class are visible in seconds."
+   },
+   {
+    "id": "corrective",
+    "how": "Fix the exact slip immediately, then re-test that item in a later lesson."
+   }
+  ],
+  "factual.generalisation": [
+   {
+    "id": "variation",
+    "how": "Change one feature at a time (notation, wording, diagram) and ask what stayed the same."
+   },
+   {
+    "id": "multiple_representations",
+    "how": "Match the same fact across symbols, words, graphs and context."
+   },
+   {
+    "id": "multiple_exposures",
+    "how": "Meet the fact again in other topics across the year, in a different form each time."
+   },
+   {
+    "id": "transfer_probe",
+    "how": "Present the fact in an unfamiliar form with no topic heading. Is it still recognised?"
+   }
+  ],
+  "factual.adaptation": [
+   {
+    "id": "open_problem",
+    "how": "Problems where students must decide which facts are relevant."
+   },
+   {
+    "id": "metacognitive",
+    "how": "Before solving, students list the facts they will use and why."
+   },
+   {
+    "id": "extension",
+    "how": "Extend by depth: which known facts are not enough, and what must be derived?"
+   }
+  ],
+  "conceptual.acquisition": [
+   {
+    "id": "explicit_instruction",
+    "how": "Explain the idea in small steps, with the reasoning said out loud."
+   },
+   {
+    "id": "concrete_visual_symbolic",
+    "how": "Area models, number lines or graphs before or beside the symbols."
+   },
+   {
+    "id": "examples_nonexamples",
+    "how": "Contrast cases that do and don’t fit, then name the feature that decides it."
+   },
+   {
+    "id": "questioning",
+    "how": "Ask every student “why does this work?”, with wait time and whole-class response."
+   }
+  ],
+  "conceptual.fluency": [
+   {
+    "id": "retrieval",
+    "how": "Retrieve the explanation, not just the answer: “Explain why in one sentence.”"
+   },
+   {
+    "id": "dialogic",
+    "how": "Students explain to a partner with because–therefore statements; the teacher revoices and probes."
+   },
+   {
+    "id": "multiple_exposures",
+    "how": "Return to the idea in later topics so it is rebuilt in new places."
+   },
+   {
+    "id": "hinge",
+    "how": "One multiple-choice item whose wrong options match known misconceptions."
+   }
+  ],
+  "conceptual.generalisation": [
+   {
+    "id": "multiple_representations",
+    "how": "Translate between graph, table, rule and context, and name what corresponds."
+   },
+   {
+    "id": "dynamic_model",
+    "how": "Change a parameter in a simulation: predict, observe, then explain."
+   },
+   {
+    "id": "collaborative",
+    "how": "Each partner holds one representation; together they must agree where the same idea appears."
+   },
+   {
+    "id": "transfer_probe",
+    "how": "A new context with no cue. Does the student still see the same concept?"
+   }
+  ],
+  "conceptual.adaptation": [
+   {
+    "id": "guided_inquiry",
+    "how": "Bounded “what if…?” investigations with a clear question and checkpoints."
+   },
+   {
+    "id": "productive_struggle",
+    "how": "Let students attempt a boundary case before it is taught, then consolidate."
+   },
+   {
+    "id": "extension",
+    "how": "Counterexamples, proofs and generalisations rather than more questions."
+   },
+   {
+    "id": "reflective",
+    "how": "Feedback on how the model was revised, not only on the final claim."
+   }
+  ],
+  "procedural.acquisition": [
+   {
+    "id": "worked_examples",
+    "how": "A full worked example with each decision explained, then part-completed ones."
+   },
+   {
+    "id": "reduce_load",
+    "how": "Simple numbers first and one new step at a time; remove anything that isn’t the step."
+   },
+   {
+    "id": "whiteboards",
+    "how": "Check each key step with the whole class before moving on."
+   },
+   {
+    "id": "corrective",
+    "how": "Catch an error at the step where it happens, before it is practised."
+   }
+  ],
+  "procedural.fluency": [
+   {
+    "id": "deliberate",
+    "how": "Short sets aimed at the one step that breaks, with feedback each round."
+   },
+   {
+    "id": "prompt_fade",
+    "how": "Remove the template or prompt card gradually while accuracy holds."
+   },
+   {
+    "id": "efficiency",
+    "how": "Once correct, feedback on compressing steps while keeping working clear."
+   },
+   {
+    "id": "readiness",
+    "how": "Regroup from today’s evidence: some extend, some get targeted practice. Regroup again next lesson."
+   }
+  ],
+  "procedural.generalisation": [
+   {
+    "id": "interleaving",
+    "how": "Mix problem types so the procedure must be chosen, not read from the heading."
+   },
+   {
+    "id": "variation",
+    "how": "Change numbers, layout and context one at a time."
+   },
+   {
+    "id": "tiered",
+    "how": "Same procedure; tiers differ in how far the surface changes."
+   },
+   {
+    "id": "strategic",
+    "how": "Ask which cue in the question showed that this procedure fits."
+   }
+  ],
+  "procedural.adaptation": [
+   {
+    "id": "problem_based",
+    "how": "Multi-step problems where procedures have to be combined or adapted."
+   },
+   {
+    "id": "collaborative",
+    "how": "Groups compare two solution paths and decide which is better, and why."
+   },
+   {
+    "id": "rubric",
+    "how": "Credit the approach, the adaptation and the checking, not only the answer."
+   },
+   {
+    "id": "reflective",
+    "how": "Ask what was changed from the standard method, and why it worked."
+   }
+  ],
+  "conditional.acquisition": [
+   {
+    "id": "goal_structure",
+    "how": "Make “choosing the method” an explicit success criterion, not an assumed skill."
+   },
+   {
+    "id": "worked_examples",
+    "how": "Model the choice itself: think aloud about why this method and not that one."
+   },
+   {
+    "id": "examples_nonexamples",
+    "how": "Side-by-side problems that look alike but need different methods."
+   },
+   {
+    "id": "hinge",
+    "how": "A “which method fits?” hinge question before any working."
+   }
+  ],
+  "conditional.fluency": [
+   {
+    "id": "retrieval",
+    "how": "Rapid “name the method and the cue” items, with no calculation."
+   },
+   {
+    "id": "whiteboards",
+    "how": "Students show only their method choice, so the whole class’s choices are visible at once."
+   },
+   {
+    "id": "prompt_fade",
+    "how": "Drop the “which method?” prompt as choices become reliable."
+   },
+   {
+    "id": "strategic",
+    "how": "Feedback names the cue the student should have noticed."
+   }
+  ],
+  "conditional.generalisation": [
+   {
+    "id": "interleaving",
+    "how": "Mixed sets out of topic order; the method must be identified first."
+   },
+   {
+    "id": "metacognitive",
+    "how": "Plan before solving: which method, which cue, how will I check?"
+   },
+   {
+    "id": "tiered",
+    "how": "Same mixed set; tiers vary how many methods are in play."
+   },
+   {
+    "id": "transfer_probe",
+    "how": "Contextual problems with no topic cue, followed by analysis of selection errors."
+   }
+  ],
+  "conditional.adaptation": [
+   {
+    "id": "open_problem",
+    "how": "Non-routine problems where several methods could work."
+   },
+   {
+    "id": "metacognitive",
+    "how": "State each candidate method’s conditions and test them before committing."
+   },
+   {
+    "id": "choice",
+    "how": "Students choose the method (by hand or with technology) and justify the choice."
+   },
+   {
+    "id": "rubric",
+    "how": "A rubric that credits the method choice and the check, not only the answer."
+   }
+  ]
  }
 });

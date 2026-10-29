@@ -299,7 +299,7 @@ window.KLI = {
     { title: "A stage describes the learning, not the learner", text: "A student can be fluent with the facts of a topic while still acquiring when to use its methods." },
     { title: "Fluency is not understanding", text: "Speed and accuracy matter, but explanation, transfer and method choice need their own evidence." },
     { title: "Transfer has to be designed", text: "Vary surface features on purpose and remove method cues over time. Don't assume knowledge will travel." },
-    { title: "Differentiate without diluting", text: "Adjust access, scaffolding, pace or challenge while protecting the core goal every student is expected to reach." },
+    { title: "The matrix is the differentiation", text: "Students working on the same topic can sit in different cells, so they get different teaching. Within a cell, adjust access and challenge without diluting the core goal." },
     { title: "Evidence drives the next move", text: "Diagnose, teach, check, and move right as the evidence allows, including when to withdraw support." }
   ],
 
