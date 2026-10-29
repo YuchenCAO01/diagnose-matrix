@@ -18,7 +18,7 @@
 <header class="topbar">
   <div class="shell">
     <a class="brand" href="index.html" data-keep-level><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>KLI Cube<small>Diagnose before you teach</small></span></a>
-    <nav class="nav" aria-label="Main"><a href="index.html" data-keep-level aria-current="page">Matrix</a><a href="cases.html" data-keep-level>Cases</a><a href="references.html" data-keep-level>References</a></nav>
+    <nav class="nav" aria-label="Main"><a href="index.html" data-keep-level aria-current="page">Matrix</a><a href="strategies.html" data-keep-level>Strategies</a><a href="cases.html" data-keep-level>Cases</a><a href="references.html" data-keep-level>References</a></nav>
     <div class="level-toggle" role="group" aria-label="Year band" data-level="junior">
       <span class="thumb"></span>
       <button data-level="junior" aria-pressed="true">Years 9–10</button>
@@ -62,7 +62,14 @@
     <section class="block" id="matrix-section">
       <div class="section-head reveal">
         <div><div class="eyebrow">The matrix · <span data-level-label>Years 9–10</span></div><h2>Knowledge × stage → response</h2></div>
-        <p>Each cell is a different teaching problem. Click a cell for what you'll see, what success looks like, what to avoid and the research behind it.</p>
+        <p>Each cell is a different teaching problem. Click a cell for what you'll see, what success looks like, the strategies that fit, and the research behind it.</p>
+      </div>
+      <div class="lens-panel reveal">
+        <div class="lens-panel-head">
+          <span class="cube-ico" aria-hidden="true"><i></i><i></i><i></i></span>
+          <div><div class="eyebrow">Third axis · instructional response</div><p id="lens-question">View the matrix through a lens: the core move for each cell, or the strategies from one area of practice.</p></div>
+        </div>
+        <div class="lens-bar" id="lens-bar" role="tablist" aria-label="Instructional lens"></div>
       </div>
       <div class="matrix-scroll reveal"><div class="matrix" id="matrix" data-swap></div></div>
       <p class="matrix-note">Rows adapt Anderson &amp; Krathwohl's knowledge dimension, with conditional knowledge in the metacognitive row. Columns follow Haring &amp; Eaton's instructional hierarchy. A topic can sit in different cells for different students.</p>
@@ -83,6 +90,7 @@
   </div>
 </footer>
 <script src="assets/data.js"></script>
+<script src="assets/strategies.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

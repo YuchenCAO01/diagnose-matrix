@@ -57,8 +57,27 @@
     return `${first} (${year})`;
   }
 
+  const LENS = Object.fromEntries(D.lenses.map(l => [l.id, l]));
+  const ST = D.strategies;
+  const hitsTag = id => ST[id].hits.length ? `<span class="hits-tag" title="Victorian HITS ${ST[id].hits.join(" & ")}">HITS ${ST[id].hits.join("·")}</span>` : "";
+  /* Strategies for a cell under a lens. HITS gathers every HITS-tagged strategy in the cell. */
+  const HITS_ORDER = ["hits", "feedback", "differentiation", "pedagogy", "practice", "assessment", "scaffolding", "representation"];
+  const pickFor = (key, lensId) => {
+    if (lensId !== "hits") return D.responses[key][lensId];
+    const seen = new Set(), out = [];
+    for (const id of HITS_ORDER.flatMap(l => D.responses[key][l])) {
+      const n = ST[id].hits[0];
+      if (n && !seen.has(n)) { seen.add(n); out.push(id); }
+      if (out.length === 4) break;
+    }
+    return out.sort((a, b) => ST[a].hits[0] - ST[b].hits[0]);
+  };
+  const cellsUsing = id => Object.keys(D.responses).filter(key => Object.values(D.responses[key]).some(list => list.includes(id)));
+  const refLinks = ids => ids.map(id => REF[id]).filter(Boolean)
+    .map(r => `<a href="references.html?level=${level}#${r.id}">${esc(refShort(r))}</a>`).join(", ");
+
   /* Small 4×4 map with numbered dots on the given cells. */
-  function miniMap(cells, { animate = true } = {}) {
+  function miniMap(cells, { plain = false } = {}) {
     let h = `<div class="mini" aria-hidden="true"><span></span>`;
     D.stages.forEach(s => (h += `<span class="h">${s.step}</span>`));
     D.knowledge.forEach(k => {
@@ -66,7 +85,7 @@
       D.stages.forEach((s, si) => {
         const key = `${k.id}.${s.id}`;
         const n = cells.indexOf(key);
-        h += `<span class="c${n > -1 ? " on" : ""}" data-cell="${key}" ${n > -1 ? `data-n="${n + 1}"` : ""} style="--k:${k.color};--t:${TINT[si]};--d:${n}"></span>`;
+        h += `<span class="c${n > -1 ? (plain ? " dot" : " on") : ""}" data-cell="${key}" ${n > -1 && !plain ? `data-n="${n + 1}"` : ""} style="--k:${k.color};--t:${TINT[si]};--d:${n}"></span>`;
       });
     });
     return h + `</div>`;
@@ -109,13 +128,34 @@
       D.stages.forEach((s, si) => {
         const key = `${k.id}.${s.id}`;
         const [title, action] = v.cells[key];
-        h += `<button class="cell" data-cell="${key}" style="--k:${k.color};--t:${TINT[si]}" aria-label="${esc(cellLabel(key))}: ${esc(title)}">
-          <h4>${esc(title)}</h4><p>${esc(action)}</p><span class="more">Open cell →</span></button>`;
+        const body = lens === "core" ? `<p>${esc(action)}</p>`
+          : `<ul class="cell-strats">${pickFor(key, lens).map(id => `<li>${esc(ST[id].name)}${hitsTag(id)}</li>`).join("")}</ul>`;
+        h += `<button class="cell${lens === "core" ? "" : " lensed"}" data-cell="${key}" style="--k:${k.color};--t:${TINT[si]}" aria-label="${esc(cellLabel(key))}: ${esc(title)}">
+          <h4>${esc(title)}</h4>${body}<span class="more">Open cell →</span></button>`;
       });
     });
     const m = $("#matrix");
     m.innerHTML = h;
     applyFinder();
+  }
+
+  /* Lens bar: the third axis */
+  let lens = "core";
+  function renderLensBar() {
+    const bar = $("#lens-bar");
+    const opts = [{ id: "core", icon: "●", name: "Core move" }, ...D.lenses];
+    bar.innerHTML = opts.map(l => `<button class="lens-btn" role="tab" data-lens="${l.id}" aria-selected="${l.id === lens}"><span>${esc(l.icon)}</span>${esc(l.name)}</button>`).join("");
+    $("#lens-question").textContent = lens === "core"
+      ? "View the matrix through a lens: the core move for each cell, or the strategies from one area of practice."
+      : `${LENS[lens].name}: ${LENS[lens].question}`;
+    bar.onclick = e => {
+      const b = e.target.closest(".lens-btn");
+      if (!b || b.dataset.lens === lens) return;
+      lens = b.dataset.lens;
+      renderLensBar();
+      renderMatrix();
+      const m = $("#matrix"); m.classList.remove("swap"); void m.offsetWidth; m.classList.add("swap");
+    };
   }
 
   /* Finder */
@@ -180,6 +220,7 @@
     const d = D.cellDetail[key];
     const si = stageIndex(s);
     const prev = D.stages[si - 1], next = D.stages[si + 1];
+    let tab = lens === "core" ? "hits" : lens;
     dlg.style.setProperty("--k", K[k].color);
     dlg.innerHTML = `
       <button class="drawer-close" aria-label="Close">✕</button>
@@ -190,6 +231,9 @@
         <h5>What you'll see</h5><p style="margin:0">${esc(d.see)}</p>
         <h5>Success looks like</h5><ul>${d.success.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
         <h5>Avoid</h5><div class="avoid">${esc(d.avoid)}</div>
+        <h5>Strategies that fit, by lens</h5>
+        <div class="d-tabs" role="tablist">${D.lenses.map(l => `<button role="tab" data-tab="${l.id}" aria-selected="${l.id === tab}">${esc(l.name)}</button>`).join("")}</div>
+        <div class="d-strats" id="d-strats"></div>
         <h5>Evidence behind this cell</h5>
         <div class="refs">${d.refs.map(id => REF[id]).filter(Boolean).map(r => `
           <a href="references.html?level=${level}#${r.id}"><b>${esc(refShort(r))}</b><span>${esc(r.supports)}</span></a>`).join("")}</div>
@@ -198,6 +242,14 @@
           ${next ? `<button data-go="${k}.${next.id}">Next stage: ${next.name} →</button>` : "<span></span>"}
         </div>
       </div>`;
+    const showTab = () => {
+      dlg.querySelectorAll(".d-tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab));
+      $("#d-strats", dlg).innerHTML = `<p class="d-q">${esc(LENS[tab].question)}</p>` + pickFor(key, tab).map(id => `
+        <div class="d-strat"><b>${esc(ST[id].name)}${hitsTag(id)}</b><p>${esc(ST[id].desc)}</p></div>`).join("") +
+        `<a class="d-more" href="strategies.html?level=${level}#lens-${tab}">All ${esc(LENS[tab].name)} strategies →</a>`;
+    };
+    dlg.querySelector(".d-tabs").onclick = e => { const b = e.target.closest("[data-tab]"); if (b) { tab = b.dataset.tab; showTab(); } };
+    showTab();
     dlg.querySelector(".drawer-close").onclick = () => dlg.close();
     dlg.querySelectorAll("[data-go]").forEach(b => (b.onclick = () => openDrawer(b.dataset.go)));
     if (!dlg.open) dlg.showModal();
@@ -214,6 +266,7 @@
     dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
     dlg.addEventListener("close", () => history.replaceState(null, "", location.pathname + location.search));
     renderFinder();
+    renderLensBar();
     const m = location.hash.match(/^#cell=([a-z]+\.[a-z]+)$/);
     if (m && D.cellDetail[m[1]]) openDrawer(m[1]);
   }
@@ -288,6 +341,35 @@
     if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   }
 
+  /* ---------- Strategies ---------- */
+  function renderStrategies() {
+    const byHits = n => Object.keys(ST).filter(id => ST[id].hits.includes(n));
+    $("#hits-grid").innerHTML = D.hits.map(hh => {
+      const ids = byHits(hh.n);
+      const cells = [...new Set(ids.flatMap(cellsUsing))];
+      return `<div class="hits-card"><div class="hits-n">${hh.n}</div><div class="hits-body"><b>${esc(hh.name)}</b>
+        <span>${ids.map(id => `<a href="#${id}">${esc(ST[id].name)}</a>`).join(" · ")}</span></div>${miniMap(cells, { plain: true })}</div>`;
+    }).join("");
+    $("#lens-index").innerHTML = D.lenses.map(l => {
+      const n = Object.values(ST).filter(x => x.lens === l.id).length;
+      return `<a href="#lens-${l.id}">${esc(l.icon)} ${esc(l.name)}<small>${n}</small></a>`;
+    }).join("");
+    $("#lens-groups").innerHTML = D.lenses.map(l => `
+      <section class="ref-group" id="lens-${l.id}">
+        <div class="ref-group-head"><div class="eyebrow">Lens · ${esc(l.icon)}</div><h2>${esc(l.name)}</h2><p>${esc(l.question)}</p></div>
+        <div class="strat-list">${Object.entries(ST).filter(([, x]) => x.lens === l.id).map(([id, x]) => `
+          <article class="strat" id="${id}">
+            <div class="strat-main">
+              <h3>${esc(x.name)}${hitsTag(id)}</h3>
+              <p>${esc(x.desc)}</p>
+              <div class="strat-refs">Evidence: ${refLinks(x.refs)}</div>
+            </div>
+            <div class="strat-map"><div class="eyebrow">Used in</div>${miniMap(cellsUsing(id), { plain: true })}</div>
+          </article>`).join("")}</div>
+      </section>`).join("");
+    if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+  }
+
   /* ---------- Motion ---------- */
   let io;
   function observe() {
@@ -305,5 +387,6 @@
   setLevel(level, { render: false });
   renderPage();
   if (page === "home") initHome();
+  if (page === "strategies") renderStrategies();
   if (page === "references") renderReferences();
 })();
